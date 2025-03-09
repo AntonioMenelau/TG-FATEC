@@ -5,154 +5,349 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDV Moderno</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-100 h-screen">
-    <div class="flex h-full">
-        <!-- Painel de Produtos -->
-        <div class="w-2/3 p-4 overflow-auto">
-            <div class="mb-4">
+<body class="bg-gray-100 h-screen flex flex-col font-sans">
+    <!-- Cabeçalho -->
+    <header class="bg-primary-700 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-cash-register text-2xl"></i>
+                <h1 class="text-xl font-bold" style="padding-left: 20px;">Lite PDV</h1>
+            </div>
+            <div class="flex items-center gap-4">
                 <div class="relative">
-                    <input type="text" placeholder="Buscar produtos..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button class="absolute right-2 top-2 text-gray-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-3 gap-4">
-                <!-- Categoria: Bebidas -->
-                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-                    <div class="bg-blue-100 rounded-lg p-2 mb-2 inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-lg">Bebidas</h3>
-                    <p class="text-gray-600 text-sm">28 produtos</p>
-                </div>
-                
-                <!-- Categoria: Alimentos -->
-                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-                    <div class="bg-green-100 rounded-lg p-2 mb-2 inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-lg">Alimentos</h3>
-                    <p class="text-gray-600 text-sm">45 produtos</p>
-                </div>
-                
-                <!-- Categoria: Limpeza -->
-                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-                    <div class="bg-purple-100 rounded-lg p-2 mb-2 inline-block">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                    </div>
-                    <h3 class="font-bold text-lg">Limpeza</h3>
-                    <p class="text-gray-600 text-sm">19 produtos</p>
-                </div>
-            </div>
-            
-            <h2 class="text-xl font-bold mt-6 mb-4">Produtos Populares</h2>
-            
-            <div class="grid grid-cols-4 gap-4">
-                <!-- Produto 1 -->
-                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-                    <div class="bg-gray-200 h-32 rounded-lg mb-3 flex items-center justify-center">
-                        <span class="text-gray-400">Imagem</span>
-                    </div>
-                    <h3 class="font-semibold">Água Mineral 500ml</h3>
-                    <p class="text-green-600 font-bold mt-1">R$ 2,50</p>
-                    <button class="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded-lg text-sm transition-colors">
-                        Adicionar
-                    </button>
-                </div>
-                
-                <!-- Produto 2 -->
-                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-                    <div class="bg-gray-200 h-32 rounded-lg mb-3 flex items-center justify-center">
-                        <span class="text-gray-400">Imagem</span>
-                    </div>
-                    <h3 class="font-semibold">Refrigerante Cola 2L</h3>
-                    <p class="text-green-600 font-bold mt-1">R$ 8,99</p>
-                    <button class="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded-lg text-sm transition-colors">
-                        Adicionar
-                    </button>
-                </div>
-                
-                <!-- Produto 3 -->
-                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-                    <div class="bg-gray-200 h-32 rounded-lg mb-3 flex items-center justify-center">
-                        <span class="text-gray-400">Imagem</span>
-                    </div>
-                    <h3 class="font-semibold">Pão Francês</h3>
-                    <p class="text-green-600 font-bold mt-1">R$ 12,90/kg</p>
-                    <button class="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded-lg text-sm transition-colors">
-                        Adicionar
-                    </button>
-                </div>
-                
-                <!-- Produto 4 -->
-                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-                    <div class="bg-gray-200 h-32 rounded-lg mb-3 flex items-center justify-center">
-                        <span class="text-gray-400">Imagem</span>
-                    </div>
-                    <h3 class="font-semibold">Leite Integral 1L</h3>
-                    <p class="text-green-600 font-bold mt-1">R$ 4,50</p>
-                    <button class="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded-lg text-sm transition-colors">
-                        Adicionar
+                    <button class="flex items-center gap-2 bg-primary-600 hover:bg-primary-800 py-2 px-3 rounded-lg transition-colors">
+                        <i class="fas fa-cog"></i>
+                        <span style="padding-left: 10px;">Configurações</span>
                     </button>
                 </div>
             </div>
         </div>
-        
-        <!-- Painel de Carrinho -->
-        <div class="w-1/3 bg-white border-l border-gray-200">
-            <div class="p-4 border-b border-gray-200">
-                <h2 class="text-xl font-bold">Carrinho de Compras</h2>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Painel de Produtos -->
+        <div class="w-2/3 flex flex-col p-4 overflow-hidden">
+            <!-- Barra de Busca e Filtros -->
+            <div class="flex gap-4 mb-4">
+                <div class="relative flex-1">
+                    <input type="text" placeholder="Buscar produtos por nome, código ou categoria..." 
+                           class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                    <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+                </div>
+                <button class="bg-white p-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
+                    <i class="fas fa-filter text-gray-600"></i>
+                </button>
+                <button class="bg-white p-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
+                    <i class="fas fa-barcode text-gray-600"></i>
+                </button>
             </div>
             
-            <div class="overflow-auto h-64 p-4">
-                <!-- Item 1 -->
-                <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-100">
-                    <div class="flex items-center">
-                        <div class="bg-gray-200 h-12 w-12 rounded flex items-center justify-center mr-3">
-                            <span class="text-gray-400 text-xs">Img</span>
+            <!-- Categorias -->
+            <div class="mb-6">
+                <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+                    <i class="fas fa-tags text-primary-600"></i>
+                    Categorias
+                </h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Categoria: Bebidas -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-all duration-200 cursor-pointer border-l-4 border-blue-500 flex items-center gap-3">
+                        <div class="bg-blue-100 rounded-lg p-2 text-blue-600">
+                            <i class="fas fa-wine-bottle"></i>
                         </div>
                         <div>
-                            <h4 class="font-medium">Água Mineral 500ml</h4>
-                            <div class="text-gray-500 text-sm">2 x R$ 2,50</div>
+                            <h3 class="font-bold text-gray-800">Bebidas</h3>
+                            <p class="text-gray-500 text-sm">28 produtos</p>
                         </div>
                     </div>
-                    <div class="text-right">
-                        <div class="font-semibold">R$ 5,00</div>
-                        <button class="text-red-500 text-sm hover:text-red-700 transition-colors">Remover</button>
+                    
+                    <!-- Categoria: Alimentos -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-all duration-200 cursor-pointer border-l-4 border-green-500 flex items-center gap-3">
+                        <div class="bg-green-100 rounded-lg p-2 text-green-600">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Alimentos</h3>
+                            <p class="text-gray-500 text-sm">45 produtos</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Limpeza -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-all duration-200 cursor-pointer border-l-4 border-purple-500 flex items-center gap-3">
+                        <div class="bg-purple-100 rounded-lg p-2 text-purple-600">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Limpeza</h3>
+                            <p class="text-gray-500 text-sm">19 produtos</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Higiene -->
+                    <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-all duration-200 cursor-pointer border-l-4 border-pink-500 flex items-center gap-3">
+                        <div class="bg-pink-100 rounded-lg p-2 text-pink-600">
+                            <i class="fas fa-pump-soap"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Higiene</h3>
+                            <p class="text-gray-500 text-sm">24 produtos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Produtos -->
+            <div class="flex-1 overflow-auto">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-lg font-bold flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        Produtos Populares
+                    </h2>
+                    <div class="flex gap-2">
+                        <button class="text-gray-600 hover:text-primary-600 transition-colors">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="text-gray-400 hover:text-primary-600 transition-colors">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- Produto 1 -->
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition-all duration-200 overflow-hidden group">
+                        <div class="relative">
+                            <div class="bg-gray-200 h-40 flex items-center justify-center overflow-hidden">
+                                <img src="/api/placeholder/200/200" alt="Água Mineral" class="object-cover w-full h-full">
+                            </div>
+                            <div class="absolute top-2 right-2">
+                                <span class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">Bebidas</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Água Mineral 500ml</h3>
+                            <div class="flex items-baseline mt-1 mb-2">
+                                <p class="text-green-600 font-bold text-lg">R$ 2,50</p>
+                                <p class="text-gray-400 text-sm line-through ml-2">R$ 3,00</p>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <button data-product-id="1" class="add-to-cart flex-1 bg-primary-500 hover:bg-primary-600 text-white py-2 px-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1">
+                                    <i class="fas fa-cart-plus"></i>
+                                    <span>Adicionar</span>
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-colors">
+                                    <i class="fas fa-info-circle text-gray-600"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 2 -->
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition-all duration-200 overflow-hidden group">
+                        <div class="relative">
+                            <div class="bg-gray-200 h-40 flex items-center justify-center overflow-hidden">
+                                <img src="/api/placeholder/200/200" alt="Refrigerante Cola" class="object-cover w-full h-full">
+                            </div>
+                            <div class="absolute top-2 right-2">
+                                <span class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">Bebidas</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Refrigerante Cola 2L</h3>
+                            <div class="flex items-baseline mt-1 mb-2">
+                                <p class="text-green-600 font-bold text-lg">R$ 8,99</p>
+                                <p class="text-gray-400 text-sm line-through ml-2">R$ 10,50</p>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <button data-product-id="2" class="add-to-cart flex-1 bg-primary-500 hover:bg-primary-600 text-white py-2 px-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1">
+                                    <i class="fas fa-cart-plus"></i>
+                                    <span>Adicionar</span>
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-colors">
+                                    <i class="fas fa-info-circle text-gray-600"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 3 -->
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition-all duration-200 overflow-hidden group">
+                        <div class="relative">
+                            <div class="bg-gray-200 h-40 flex items-center justify-center overflow-hidden">
+                                <img src="/api/placeholder/200/200" alt="Pão Francês" class="object-cover w-full h-full">
+                            </div>
+                            <div class="absolute top-2 right-2">
+                                <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">Alimentos</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Pão Francês</h3>
+                            <div class="flex items-baseline mt-1 mb-2">
+                                <p class="text-green-600 font-bold text-lg">R$ 12,90/kg</p>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <button data-product-id="3" class="add-to-cart flex-1 bg-primary-500 hover:bg-primary-600 text-white py-2 px-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1">
+                                    <i class="fas fa-cart-plus"></i>
+                                    <span>Adicionar</span>
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-colors">
+                                    <i class="fas fa-info-circle text-gray-600"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Produto 4 -->
+                    <div class="bg-white rounded-lg shadow hover:shadow-md transition-all duration-200 overflow-hidden group">
+                        <div class="relative">
+                            <div class="bg-gray-200 h-40 flex items-center justify-center overflow-hidden">
+                                <img src="/api/placeholder/200/200" alt="Leite Integral" class="object-cover w-full h-full">
+                            </div>
+                            <div class="absolute top-2 right-2">
+                                <span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">Alimentos</span>
+                            </div>
+                            <div class="absolute top-2 left-2">
+                                <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">-10%</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Leite Integral 1L</h3>
+                            <div class="flex items-baseline mt-1 mb-2">
+                                <p class="text-green-600 font-bold text-lg">R$ 4,50</p>
+                                <p class="text-gray-400 text-sm line-through ml-2">R$ 5,00</p>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <button data-product-id="4" class="add-to-cart flex-1 bg-primary-500 hover:bg-primary-600 text-white py-2 px-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-1">
+                                    <i class="fas fa-cart-plus"></i>
+                                    <span>Adicionar</span>
+                                </button>
+                                <button class="bg-gray-200 hover:bg-gray-300 p-2 rounded-lg transition-colors">
+                                    <i class="fas fa-info-circle text-gray-600"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Painel do Carrinho -->
+        <div class="w-1/3 bg-white border-l border-gray-200 flex flex-col shadow-lg">
+            <div class="p-4 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i class="fas fa-shopping-cart text-primary-600"></i>
+                    Carrinho
+                </h2>
+                <span class="bg-primary-600 text-white text-sm font-semibold px-2 py-1 rounded-full">2 itens</span>
+            </div>
+            
+            <!-- Lista de Itens do Carrinho -->
+            <div class="overflow-auto flex-1 p-4">
+                <!-- Item 1 -->
+                <div class="bg-gray-50 rounded-lg p-3 mb-3 relative group">
+                    <div class="flex items-center">
+                        <div class="bg-gray-200 h-16 w-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                            <img src="/api/placeholder/100/100" alt="Água Mineral" class="object-cover w-full h-full">
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-800">Água Mineral 500ml</h4>
+                            <div class="flex items-center justify-between mt-1">
+                                <div class="text-gray-500 text-sm">R$ 2,50 cada</div>
+                                <div class="flex items-center justify-end">
+                                    <button class="decrease-qty bg-gray-200 hover:bg-gray-300 w-6 h-6 rounded flex items-center justify-center">
+                                        <i class="fas fa-minus text-xs text-gray-600"></i>
+                                    </button>
+                                    <input type="text" value="2" class="w-10 text-center mx-1 border-0 bg-transparent font-medium">
+                                    <button class="increase-qty bg-gray-200 hover:bg-gray-300 w-6 h-6 rounded flex items-center justify-center">
+                                        <i class="fas fa-plus text-xs text-gray-600"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-2 pt-2 border-t border-gray-200">
+                        <button class="text-red-500 text-sm hover:text-red-700 transition-colors flex items-center gap-1">
+                            <i class="fas fa-trash-alt"></i>
+                            <span>Remover</span>
+                        </button>
+                        <div class="font-semibold text-gray-800">R$ 5,00</div>
                     </div>
                 </div>
                 
                 <!-- Item 2 -->
-                <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-100">
+                <div class="bg-gray-50 rounded-lg p-3 mb-3 relative group">
                     <div class="flex items-center">
-                        <div class="bg-gray-200 h-12 w-12 rounded flex items-center justify-center mr-3">
-                            <span class="text-gray-400 text-xs">Img</span>
+                        <div class="bg-gray-200 h-16 w-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                            <img src="/api/placeholder/100/100" alt="Pão Francês" class="object-cover w-full h-full">
                         </div>
-                        <div>
-                            <h4 class="font-medium">Pão Francês</h4>
-                            <div class="text-gray-500 text-sm">0,5 kg x R$ 12,90</div>
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-800">Pão Francês</h4>
+                            <div class="flex items-center justify-between mt-1">
+                                <div class="text-gray-500 text-sm">R$ 12,90/kg</div>
+                                <div class="flex items-center justify-end">
+                                    <button class="decrease-qty bg-gray-200 hover:bg-gray-300 w-6 h-6 rounded flex items-center justify-center">
+                                        <i class="fas fa-minus text-xs text-gray-600"></i>
+                                    </button>
+                                    <input type="text" value="0.5" class="w-10 text-center mx-1 border-0 bg-transparent font-medium">
+                                    <button class="increase-qty bg-gray-200 hover:bg-gray-300 w-6 h-6 rounded flex items-center justify-center">
+                                        <i class="fas fa-plus text-xs text-gray-600"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-right">
-                        <div class="font-semibold">R$ 6,45</div>
-                        <button class="text-red-500 text-sm hover:text-red-700 transition-colors">Remover</button>
+                    <div class="flex justify-between mt-2 pt-2 border-t border-gray-200">
+                        <button class="text-red-500 text-sm hover:text-red-700 transition-colors flex items-center gap-1">
+                            <i class="fas fa-trash-alt"></i>
+                            <span>Remover</span>
+                        </button>
+                        <div class="font-semibold text-gray-800">R$ 6,45</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Resumo do pedido -->
-            <div class="p-4 bg-gray-50">
+            <!-- Cupom de Desconto -->
+            <div class="p-4 border-t border-gray-200 bg-gray-50">
+                <div class="flex">
+                    <input type="text" placeholder="Cupom de desconto" class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500">
+                    <button class="bg-primary-600 hover:bg-primary-700 text-white px-4 rounded-r-lg transition-colors">
+                        Aplicar
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Resumo do Pedido -->
+            <div class="p-4 bg-gray-50 border-t border-gray-200">
                 <div class="flex justify-between mb-2">
                     <span class="text-gray-600">Subtotal</span>
                     <span class="font-semibold">R$ 11,45</span>
@@ -171,49 +366,274 @@
                 </div>
                 
                 <!-- Opções de Pagamento -->
-                <div class="grid grid-cols-2 gap-3 mb-4">
-                    <button class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg text-center transition-colors">
-                        Dinheiro
-                    </button>
-                    <button class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg text-center transition-colors">
-                        Cartão
-                    </button>
-                    <button class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg text-center transition-colors">
-                        Pix
-                    </button>
-                    <button class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg text-center transition-colors">
-                        Crédito
-                    </button>
+                <div class="mb-4">
+                    <h3 class="text-sm font-semibold mb-2 text-gray-700">Forma de Pagamento</h3>
+                    <div class="grid grid-cols-4 gap-2">
+                        <button class="payment-option bg-gray-200 hover:bg-gray-300 py-2 px-2 rounded-lg text-center transition-colors flex flex-col items-center gap-1">
+                            <i class="fas fa-money-bill-wave text-gray-600"></i>
+                            <span class="text-xs font-medium">Dinheiro</span>
+                        </button>
+                        <button class="payment-option bg-gray-200 hover:bg-gray-300 py-2 px-2 rounded-lg text-center transition-colors flex flex-col items-center gap-1">
+                            <i class="fas fa-credit-card text-gray-600"></i>
+                            <span class="text-xs font-medium">Cartão</span>
+                        </button>
+                        <button class="payment-option bg-gray-200 hover:bg-gray-300 py-2 px-2 rounded-lg text-center transition-colors flex flex-col items-center gap-1">
+                            <i class="fas fa-qrcode text-gray-600"></i>
+                            <span class="text-xs font-medium">Pix</span>
+                        </button>
+                        <button class="payment-option bg-gray-200 hover:bg-gray-300 py-2 px-2 rounded-lg text-center transition-colors flex flex-col items-center gap-1">
+                            <i class="fas fa-receipt text-gray-600"></i>
+                            <span class="text-xs font-medium">Crédito</span>
+                        </button>
+                    </div>
                 </div>
                 
-                <button class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-colors">
-                    Finalizar Venda
+                <!-- Botão de Finalizar -->
+                <button id="checkout-btn" class="w-full bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Finalizar Venda</span>
                 </button>
+                
+                <!-- Atalhos -->
+                <div class="flex justify-between mt-4 text-xs text-gray-500">
+                    <span><i class="fas fa-keyboard mr-1"></i> F4: Novo</span>
+                    <span><i class="fas fa-keyboard mr-1"></i> F8: Pagamento</span>
+                    <span><i class="fas fa-keyboard mr-1"></i> F12: Finalizar</span>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Modal de Quantidade -->
+    <div id="qty-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md">
+            <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="font-bold text-lg">Quantidade</h3>
+                <button class="close-modal text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <p class="text-gray-700 font-medium mb-2">Água Mineral 500ml</p>
+                    <p class="text-gray-600 mb-4">R$ 2,50 cada</p>
+                    
+                    <div class="flex items-center justify-center">
+                        <button class="decrease-modal-qty bg-gray-200 hover:bg-gray-300 w-10 h-10 rounded-l-lg flex items-center justify-center">
+                            <i class="fas fa-minus text-gray-600"></i>
+                        </button>
+                        <input type="text" id="modal-qty" value="1" class="w-20 text-center py-2 border-t border-b border-gray-300 text-lg font-bold">
+                        <button class="increase-modal-qty bg-gray-200 hover:bg-gray-300 w-10 h-10 rounded-r-lg flex items-center justify-center">
+                            <i class="fas fa-plus text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between">
+                    <button class="close-modal bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        Cancelar
+                    </button>
+                    <button class="confirm-qty bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Finalização -->
+    <div id="checkout-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="font-bold text-lg">Finalizar Venda</h3>
+                <button class="close-checkout-modal text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="mb-6">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-600">Total da Compra</span>
+                        <span class="font-bold text-lg">R$ 11,45</span>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label class="block text-gray-700 font-medium mb-2">Valor Recebido</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-500">R$</span>
+                            <input type="text" id="received-amount" value="20.00" class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 text-right font-bold text-lg">
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 p-3 bg-gray-100 rounded-lg">
+                        <div class="flex justify-between text-gray-700">
+                            <span>Troco</span>
+                            <span class="font-bold text-lg">R$ 8,55</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-between">
+                    <button class="close-checkout-modal bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors">
+                        Voltar
+                    </button>
+                    <button class="bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center gap-2">
+                        <i class="fas fa-print"></i>
+                        <span>Finalizar e Imprimir</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
     <script>
-        // JavaScript para interatividade
-        document.addEventListener('DOMContentLoaded', function() {
-            // Exemplo de função para adicionar item ao carrinho
-            const addButtons = document.querySelectorAll('button:not(.text-red-500)');
-            addButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Aqui você pode implementar a lógica para adicionar itens ao carrinho
-                    console.log('Item adicionado ao carrinho');
+        class Cart {
+            constructor() {
+                this.items = [];
+                this.discount = 0;
+                this.tax = 0;
+                this.paymentMethod = null;
+            }
+
+            addItem(product, quantity) {
+                const existingItem = this.items.find(item => item.id === product.id);
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    this.items.push({...product, quantity});
+                }
+                this.updateCartDisplay();
+            }
+
+            removeItem(itemId) {
+                this.items = this.items.filter(item => item.id !== itemId);
+                this.updateCartDisplay();
+            }
+
+            applyDiscount(code) {
+                // Lógica de desconto
+            }
+
+            calculateTotal() {
+                const subtotal = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                return subtotal - this.discount + this.tax;
+            }
+
+            updateCartDisplay() {
+                // Atualizar interface do carrinho
+            }
+        }
+
+        class Product {
+            constructor(id, name, price, category, image) {
+                this.id = id;
+                this.name = name;
+                this.price = price;
+                this.category = category;
+                this.image = image;
+            }
+        }
+
+        // Inicialização
+        const cart = new Cart();
+        let selectedProduct = null;
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Modal de Quantidade
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    selectedProduct = getProductData(e.target.closest('[data-product-id]'));
+                    showQtyModal();
                 });
             });
-            
-            // Exemplo de função para remover item do carrinho
-            const removeButtons = document.querySelectorAll('button.text-red-500');
-            removeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Aqui você pode implementar a lógica para remover itens do carrinho
-                    console.log('Item removido do carrinho');
+
+            // Controles de Quantidade
+            document.querySelectorAll('.increase-qty, .decrease-qty').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const input = e.target.closest('.cart-item').querySelector('input');
+                    adjustQuantity(input, e.target.classList.contains('increase-qty') ? 1 : -1);
+                });
+            });
+
+            // Finalização de Compra
+            document.getElementById('checkout-btn').addEventListener('click', showCheckoutModal);
+        });
+
+        function showQtyModal() {
+            document.getElementById('qty-modal').classList.remove('hidden');
+            document.getElementById('modal-qty').value = 1;
+        }
+
+        function showCheckoutModal() {
+            const modal = document.getElementById('checkout-modal');
+            modal.classList.remove('hidden');
+            updateCheckoutValues();
+        }
+
+        function adjustQuantity(input, delta) {
+            let value = parseFloat(input.value) || 0;
+            value = Math.max(0, value + delta);
+            input.value = value.toFixed(2);
+            updateCartTotal();
+        }
+
+        function updateCheckoutValues() {
+            const total = cart.calculateTotal();
+            const receivedInput = document.getElementById('received-amount');
+            receivedInput.value = total.toFixed(2);
+            calculateChange();
+        }
+
+        function calculateChange() {
+            const received = parseFloat(document.getElementById('received-amount').value) || 0;
+            const total = cart.calculateTotal();
+            const change = received - total;
+            document.querySelector('#checkout-modal .change-display').textContent = 
+                `R$ ${change >= 0 ? change.toFixed(2) : '0.00'}`;
+        }
+
+        // Fechar Modais
+        document.querySelectorAll('.close-modal, .close-checkout-modal').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('[id$="-modal"]').forEach(modal => {
+                    modal.classList.add('hidden');
                 });
             });
         });
+
+        // Atualizar valores em tempo real
+        document.getElementById('received-amount').addEventListener('input', calculateChange);
+
+        // Seleção de Método de Pagamento
+        document.querySelectorAll('.payment-option').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.payment-option').forEach(btn => {
+                    btn.classList.remove('ring-2', 'ring-primary-500');
+                });
+                button.classList.add('ring-2', 'ring-primary-500');
+                cart.paymentMethod = button.dataset.method;
+            });
+        });
+
+        // Funções Auxiliares
+        function getProductData(element) {
+            return new Product(
+                element.dataset.productId,
+                element.querySelector('h3').textContent,
+                parseFloat(element.querySelector('.price').textContent.replace('R$ ', '')),
+                element.querySelector('.category').textContent,
+                element.querySelector('img').src
+            );
+        }
+
+        function updateCartTotal() {
+            const total = cart.calculateTotal();
+            document.querySelectorAll('.total-display').forEach(element => {
+                element.textContent = `R$ ${total.toFixed(2)}`;
+            });
+        }
     </script>
 </body>
 </html>
