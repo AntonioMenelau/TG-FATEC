@@ -1,9 +1,9 @@
 import sys
 import os
 from PyQt5.QtCore import QUrl, Qt
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QPushButton, QHBoxLayout, QLabel
-from PyQt5.QtGui import QIcon, QFont
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QHBoxLayout, QLabel
 from PyQt5.QtWebEngineWidgets import QWebEngineView
+
 
 class PDVApp(QMainWindow):
     def __init__(self):
@@ -28,10 +28,8 @@ class PDVApp(QMainWindow):
     def setupWebView(self):
         self.webView = QWebEngineView()
         self.layout.addWidget(self.webView)
-        
-        # Carrega o arquivo index.html
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        index_path = os.path.join(current_dir, "index.html")
+        index_path = os.path.join(current_dir, "login.html")
         self.webView.load(QUrl.fromLocalFile(index_path))
 
     def setupFooter(self):
@@ -48,7 +46,7 @@ class PDVApp(QMainWindow):
         footerLayout = QHBoxLayout(footer)
         footerLayout.setContentsMargins(10, 0, 10, 0)
         
-        statusLabel = QLabel("Pronto para vender! • Caixa: 01 • Operador: João • Data: 08/03/2025")
+        statusLabel = QLabel(f"Pronto para vender! • Caixa: {''} • Operador: {''} • Data: {''}")
         statusLabel.setStyleSheet("color: #64748B; font-size: 12px;")
         
         versionLabel = QLabel("v1.0.0")
@@ -60,8 +58,9 @@ class PDVApp(QMainWindow):
         
         self.layout.addWidget(footer)
 
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = PDVApp()
-    window.showFullScreen()
+    main = PDVApp()
+    main.showFullScreen()
     sys.exit(app.exec_())

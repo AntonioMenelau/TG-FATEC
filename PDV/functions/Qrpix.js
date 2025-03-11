@@ -113,7 +113,7 @@ class Payload {
     }
 }
 
-function generateQRCode() {
+function generateQRCode(query) {
     const pixKey = "";
     const description = "";
     const merchantName = "";
@@ -139,9 +139,9 @@ function generateQRCode() {
     payloadEl.textContent = qrCodeContent;
     payloadEl.classList.remove('hidden');
     
-    document.getElementById('qrcode').innerHTML = '';
+    query.innerHTML = '';
 
-    new QRCode(document.getElementById('qrcode'), {
+    new QRCode(query, {
         text: qrCodeContent,
         width: 256,
         height: 256,
@@ -149,7 +149,4 @@ function generateQRCode() {
         colorLight: '#ffffff',
         correctLevel: QRCode.CorrectLevel.L
     });
-    
-    document.getElementById('downloadBtn').classList.remove('hidden');
-    document.getElementById('copyBtn').classList.remove('hidden');
 }
