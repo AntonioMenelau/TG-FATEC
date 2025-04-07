@@ -88,9 +88,7 @@ class RenderizarWebInterface(QWebEngineView):
         try:
             caminho_completo = os.path.join(os.path.dirname(os.path.abspath(__file__)), caminho)
             print(f"Carregando página: {caminho_completo}")
-            with open(caminho_completo, "r", encoding="utf-8") as file:
-                conteudo_html = file.read()
-            self.setHtml(conteudo_html, QUrl("file:///"))
+            self.load(QUrl.fromLocalFile(caminho_completo))
         except Exception as e:
             print(f"Erro ao carregar página: {str(e)}")
             self.setHtml(f"<html><body><h1>Erro ao carregar: {str(e)}</h1></body></html>", QUrl("file:///"))

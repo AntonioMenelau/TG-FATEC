@@ -4,22 +4,17 @@ var comunicador;
 window.onload = function() {
     new QWebChannel(qt.webChannelTransport, function(channel) {
         comunicador = channel.objects.comunicador;
-        comunicador.sinalMensagem.connect(function(mensagem) {
-            document.getElementById('resposta').innerHTML = 
-                '<span class="pt-msg">' + mensagem + '</span>';
-            console.log("sinalMensagem", mensagem);
+        comunicador.sinalLogar.connect(function(resposta){
+            Logando(resposta)
         });
     });
 };
 
 // Simular o processo de login
 function simulateLogin() {
-    const loginButton = document.getElementById('loginButton');
     const loginForm = document.getElementById('loginForm');
-    const successMessage = document.getElementById('successMessage');
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
-    const errorMessage = document.getElementById('errorMessage') || document.createElement('div');
     
     if (!usernameInput.value || !passwordInput.value) {
         if (!document.getElementById('errorMessage')) {
@@ -31,13 +26,18 @@ function simulateLogin() {
         return; 
     }
     
-    var resposta = comunicador.Logar(usernameInput.value,passwordInput.value)
-    
+    comunicador.Logar(usernameInput.value,passwordInput.value)
     // Lógica simples de validação (exemplo)
     const validUsername = "admin";
     const validPassword = "123";
-    
-    if (usernameInput.value !== validUsername || passwordInput.value !== validPassword) {
+}
+
+function Logando(status){
+    const loginButton = document.getElementById('loginButton');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage') || document.createElement('div');
+
+    if (!status) {
         // Mostrar mensagem de erro para credenciais inválidas
         if (!document.getElementById('errorMessage')) {
         errorMessage.id = 'errorMessage';
